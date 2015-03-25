@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Sign in page attributes-->
+    <color name="sign_in_button">#e5c9fd</color>
+    <color name="sign_in_background">#e5c9fd</color>
+
     <color name="toolbar_background2">#e9c8fe</color>
     <color name="toolbar_background3">#cbe2ff</color>
     <color name="toolbar_background">#e5c9fd</color>

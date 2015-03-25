@@ -3,8 +3,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.shayla.questboardv1.QuestSlidePageFragment">
 
-    <!-- fragment_screen_slide_page.xml
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  <!--  <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >   -->
@@ -19,43 +18,57 @@
             android:id="@+id/questToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    <TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_extra_large"
-            android:textColor="@color/theme_orange"
+            android:gravity="center"
+            android:textColor="@color/theme_med_blue"
             android:text="quest name"
             android:id="@+id/quest_name"
-            android:paddingBottom="@dimen/activity_vertical_margin"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
-            android:textColor="@color/theme_med_blue"
-            android:text="@string/quest_description_label"
-            android:id="@+id/quest_description_label" />
-        <TextView
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_large"
+                android:textColor="@color/theme_purple"
+                android:text="@string/quest_description_label"
+                android:id="@+id/quest_description_label" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_large"
+                android:text="quest description"
+                android:id="@+id/quest_description" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
-            android:text="quest description"
-            android:id="@+id/quest_description" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
-            android:textColor="@color/theme_med_blue"
-            android:text="@string/quest_giver_name_label"
-            android:id="@+id/giver_name_label" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
-            android:text="giver name"
-            android:id="@+id/giver_name" />
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_large"
+                android:textColor="@color/theme_purple"
+                android:text="@string/quest_giver_name_label"
+                android:id="@+id/giver_name_label" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_large"
+                android:text="giver name"
+                android:id="@+id/giver_name" />
+        </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            android:adjustViewBounds="true"
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_horizontal_margin"
             android:id="@+id/giver_image"

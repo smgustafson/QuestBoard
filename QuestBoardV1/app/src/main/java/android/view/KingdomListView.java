@@ -13,8 +13,10 @@ import android.view.View;
 import com.example.shayla.questboardv1.R;
 
 /**
- * TODO: document your custom view class.
- */
+* TODO: document your custom view class.
+*/
+
+
 public class KingdomListView extends View {
     private String mExampleString; // TODO: use a default from R.string...
     private int mExampleColor = Color.RED; // TODO: use a default from R.color...

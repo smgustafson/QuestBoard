@@ -6,13 +6,15 @@
     <string name="action_logout">Log Out</string>
     <string name="element_text">Element</string>
 
-    <string name="climate_label">Climate: </string>
-    <string name="population_label">Population: </string>
+    <!--Labels for Kingdom Details Slides -->
+    <string name="climate_label">CLIMATE: </string>
+    <string name="population_label">POPULATION: </string>
 
-    <string name="quest_description_label">Description: </string>
-    <string name="quest_giver_name_label">Giver: </string>
+    <!--Labels for Quest Details Slides -->
+    <string name="quest_description_label">DESCRIPTION: </string>
+    <string name="quest_giver_name_label">GIVER: </string>
 
-<!-- TODO: Remove or change this placeholder text -->
+    <!--Labels that I don't think I used...if time, clean this-->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_quest">QuestActivity</string>
     <string name="title_activity_quest_slide">QuestSlideActivity</string>
