@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="toolbar_background2">#e9c8fe</color>
+    <color name="toolbar_background3">#cbe2ff</color>
+    <color name="toolbar_background">#e5c9fd</color>
+
+    <!--Colors that fit withing the theme of the icon-->
+    <color name="theme_pink">#ff79ce</color>
+    <color name="theme_light_blue">#8fe7f2</color>
+    <color name="theme_sky_blue">#bfd6f8</color>
+    <color name="theme_med_blue">#0080cd</color>
+    <color name="theme_dark_blue">#0000ff</color>
+    <color name="theme_purple">#717aca</color>
+    <color name="theme_light_purple">#e5c9fd</color>
+    <color name="theme_orange">#ff6500</color>
+
+
+</resources>

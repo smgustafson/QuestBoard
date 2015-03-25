@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Quest Board</string>
+    <string name="title_activity_kingdoms_list">Kingdoms</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Log Out</string>
+    <string name="element_text">Element</string>
+
+    <string name="climate_label">Climate: </string>
+    <string name="population_label">Population: </string>
+
+    <string name="quest_description_label">Description: </string>
+    <string name="quest_giver_name_label">Giver: </string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_quest">QuestActivity</string>
+    <string name="title_activity_quest_slide">QuestSlideActivity</string>
+</resources>

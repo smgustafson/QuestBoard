@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.shayla.questboardv1.KingdomDetailsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal">
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/detailsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kingdom name"
+            android:textSize="@dimen/text_extra_large"
+            android:textColor="@color/theme_purple"
+            android:id="@+id/kingdom_name" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:id="@+id/kingdom_image"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:textColor="@color/theme_med_blue"
+            android:labelFor="@+id/kingdom_climate"
+            android:text="@string/climate_label"
+            android:id="@+id/kingdom_climate_label" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:text="kingdom climate"
+            android:id="@+id/kingdom_climate" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:textColor="@color/theme_med_blue"
+            android:labelFor="@+id/kingdom_population"
+            android:text="@string/population_label"
+            android:id="@+id/kingdom_population_label" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_large"
+            android:text="kingdom population"
+            android:id="@+id/kingdom_population" />
+    </LinearLayout>
+
+</FrameLayout>
