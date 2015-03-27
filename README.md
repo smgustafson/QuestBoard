@@ -13,8 +13,9 @@
   Installation
   ------------------
 
-  Download APK and install on mobile device or download project 
-  and run via Andriod Studio. 
+  Download project and run via Andriod Studio. If APK were available 
+  (blocked by gitignore), would download APK on android mobile device 
+  and install app.  
   
   Stock Images
   -----------------
