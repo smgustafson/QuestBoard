@@ -2,11 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.shayla.questboardv1.QuestSlidePageFragment">
-
-  <!--  <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >   -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -18,61 +13,91 @@
             android:id="@+id/questToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_extra_large"
-            android:gravity="center"
-            android:textColor="@color/theme_med_blue"
-            android:text="quest name"
-            android:id="@+id/quest_name"
-            android:padding="@dimen/activity_horizontal_margin"/>
-        <LinearLayout
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/activity_horizontal_margin">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:textColor="@color/theme_purple"
-                android:text="@string/quest_description_label"
-                android:id="@+id/quest_description_label" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:text="quest description"
-                android:id="@+id/quest_description" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_horizontal_margin">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:textColor="@color/theme_purple"
-                android:text="@string/quest_giver_name_label"
-                android:id="@+id/giver_name_label" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:text="giver name"
-                android:id="@+id/giver_name" />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:adjustViewBounds="true"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:id="@+id/giver_image"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_extra_large"
+                        android:layout_gravity="center" android:elegantTextHeight="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/theme_med_blue"
+                        android:text="quest name"
+                        android:id="@+id/quest_name"
+                        android:paddingTop="@dimen/activity_horizontal_margin"
+                        android:paddingLeft="@dimen/activity_horizontal_margin"
+                        android:paddingRight="@dimen/activity_horizontal_margin"/>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_horizontal_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_large"
+                            android:textColor="@color/theme_purple"
+                            android:text="@string/quest_description_label"
+                            android:id="@+id/quest_description_label" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_medium"
+                            android:text="quest description"
+                            android:id="@+id/quest_description" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_horizontal_margin">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_large"
+                            android:textColor="@color/theme_purple"
+                            android:text="@string/quest_giver_name_label"
+                            android:id="@+id/giver_name_label" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_large"
+                            android:text="giver name"
+                            android:id="@+id/giver_name" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:weightSum="6">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="4">
+                            <ImageView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:paddingBottom="@dimen/activity_horizontal_margin"
+                                android:paddingTop="@dimen/activity_horizontal_margin"
+                                android:id="@+id/giver_image"
+                                android:layout_alignParentTop="true" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
 </FrameLayout>

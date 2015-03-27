@@ -7,6 +7,9 @@ import retrofit.http.Path;
 
 /**
  * Created by Shayla on 3/16/2015.
+ *
+ * Runnable test class to unsure that REST api is working with retrofit library.\nNot used for final
+ * version of app. Simply used to test REST endpoints
  */
 public class TestInterface {
         private static final String API_URL = "https://challenge2015.myriadapps.com";

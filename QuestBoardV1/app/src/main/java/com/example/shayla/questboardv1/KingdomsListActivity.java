@@ -2,6 +2,7 @@ package com.example.shayla.questboardv1;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,15 +24,15 @@ import retrofit.client.Response;
 /**
  * Displays a list of all Kingdoms available and allows user to select one
  */
-public class KingdomsListActivity extends ActionBarActivity {
+public class KingdomsListActivity extends ActionBarActivity implements WelcomeFragment.WelcomeDialogListener {
     //UI References
     private RecyclerView mRecyclerView;
     private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Toolbar toolbar;
 
-
     private String emailAddress = null;
+    private String savedCallbackMessage;
     List<Kingdom> list = new ArrayList<Kingdom>();
 
     /**
@@ -44,14 +45,20 @@ public class KingdomsListActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences settings = getSharedPreferences("SAVED_INFO", 0);
-        String savedEmail = settings.getString("EMAIL_ADDRESS", null); //Get saved email address, default null
+        SharedPreferences settings = getSharedPreferences(getString(R.string.saved_info), 0);
+        String savedEmail = settings.getString(getString(R.string.email_address), null); //Get saved email address, default null
+        String savedCallbackMessage = settings.getString(getString(R.string.callback_message), null);
         if(savedEmail==null) { //If no saved email address, navigate to {@Link LoginActivity}
+            settings = getSharedPreferences(getString(R.string.saved_info), 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(getString(R.string.is_new_user), true);
+            editor.commit();
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(intent); //Navigate to LoginActivity
             finish(); //Close this activity so back button does not bring user to logged in screen
         } else {
             emailAddress = savedEmail;
+            this.savedCallbackMessage = savedCallbackMessage;
         }
 
         setContentView(R.layout.activity_kingdoms_list);
@@ -65,16 +72,25 @@ public class KingdomsListActivity extends ActionBarActivity {
         //You can now use and reference the ActionBar
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
+        //Changes in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
-        // use a linear layout manager
+        //Uses a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(this);
 
         //Access the list of Kingdoms from the database
         getDataSet();
+
+        //Display the WelcomeFragment dialog box if this is a new user
+        if(settings.getBoolean(getString(R.string.is_new_user), false)) {
+            WelcomeFragment welcomeFragment = new WelcomeFragment();
+            Bundle args = new Bundle();
+            //Sets values that would be displayed on UI
+            args.putString(getString(R.string.welcome_message), this.savedCallbackMessage);
+            welcomeFragment.setArguments(args);
+            welcomeFragment.show(getSupportFragmentManager(), "WelcomeDialogFragment");
+        }
     }
 
     /**
@@ -116,10 +132,11 @@ public class KingdomsListActivity extends ActionBarActivity {
     @Override
     protected void onStop(){
         super.onStop();
-
-        SharedPreferences settings = getSharedPreferences("SAVED_INFO", 0);
+        //indicate that the user has logged in before (to prevent dialog box) and save email address
+        SharedPreferences settings = getSharedPreferences(getString(R.string.saved_info), 0);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString("EMAIL_ADDRESS", emailAddress); //Save the email address so the user remains logged in
+        editor.putString(getString(R.string.email_address), emailAddress);//Save the email address so the user remains logged in
+        editor.putBoolean(getString(R.string.is_new_user), false);//This is no longer a 'new' user
         editor.commit();
     }
 
@@ -132,7 +149,7 @@ public class KingdomsListActivity extends ActionBarActivity {
             @Override
             public void success(List<Kingdom> kingdoms, Response response) {
                 list = kingdoms;
-                mAdapter.mDataset = kingdoms;
+                mAdapter.mDataset = kingdoms; //finish setting up the activity after the async call is complete
                 mRecyclerView.setAdapter(mAdapter);
             }
             @Override
@@ -142,5 +159,19 @@ public class KingdomsListActivity extends ActionBarActivity {
         };
         //Call the REST Client to set the Kingdoms list
         rest.getKingdomsInterface().kingdoms(callback);
+    }
+
+    /**
+     * Handle click of WelcomeFragment dialog box. Indicate that this is no longer a new user
+     *
+     * @param dialog
+     */
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        SharedPreferences settings = getSharedPreferences(getString(R.string.saved_info), 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(getString(R.string.is_new_user), false);
+        editor.commit(); //save changes
+        dialog.dismiss(); //close dialog box
     }
 }

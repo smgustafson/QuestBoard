@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v4.app.DialogFragment;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -48,12 +49,20 @@ public class LoginActivity extends Activity {
      */
     private UserLoginTask mAuthTask = null;
 
+    //Callback message after logging in
+    private String mMessage;
+
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mUsernameView;
     private View mProgressView;
     private View mLoginFormView;
 
+    /**
+     * Create the UI for the {@Link Activity}
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +75,7 @@ public class LoginActivity extends Activity {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
+                    attemptLogin(); //handles all of the validation
                     return true;
                 }
                 return false;
@@ -232,16 +241,8 @@ public class LoginActivity extends Activity {
         protected Boolean doInBackground(Void... params) {
             //POST the email address to api using retrofit and return true
             RestClientUsers rest = new RestClientUsers();
-            Callback callback = new Callback<SubscribeMessage>() {
-                @Override
-                public void failure(final RetrofitError error) {
-                }
-
-                @Override
-                public void success(SubscribeMessage message, Response response) {
-                }
-            };
-            rest.getUsersInterface().createUser(mEmail,callback);
+            SubscribeMessage message = rest.getUsersInterface().createUser(mEmail);
+            mMessage = message.getMessage(); //Callback message from registering in database
             return true;
         }
 
@@ -258,9 +259,11 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent(LoginActivity.this, KingdomsListActivity.class);
                 //We need an Editor object to make preference changes.
                 //Saves information for email address to signify that user is logged in
-                SharedPreferences settings = getSharedPreferences("SAVED_INFO", 0);
+                SharedPreferences settings = getSharedPreferences(getString(R.string.saved_info), 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString("EMAIL_ADDRESS", mEmail);
+                editor.putString(getString(R.string.email_address), mEmail);
+                editor.putString(getString(R.string.callback_message), mMessage);
+                editor.putBoolean(getString(R.string.is_new_user), true); //This is the first time the user has logged in
                 editor.commit();
 
                 LoginActivity.this.startActivity(intent); //navigate to KingdomListActivity
@@ -271,6 +274,9 @@ public class LoginActivity extends Activity {
             }
         }
 
+        /**
+         * Handles onCancelled event
+         */
         @Override
         protected void onCancelled() {
             mAuthTask = null;

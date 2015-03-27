@@ -4,8 +4,8 @@
     <color name="sign_in_button">#e5c9fd</color>
     <color name="sign_in_background">#e5c9fd</color>
 
-    <color name="toolbar_background2">#e9c8fe</color>
-    <color name="toolbar_background3">#cbe2ff</color>
+    <color name="potential_toolbar_background1">#e9c8fe</color>
+    <color name="potentail_toolbar_background2">#cbe2ff</color>
     <color name="toolbar_background">#e5c9fd</color>
 
     <!--Colors that fit withing the theme of the icon-->

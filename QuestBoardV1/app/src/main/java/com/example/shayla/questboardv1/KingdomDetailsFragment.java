@@ -140,9 +140,15 @@ public class KingdomDetailsFragment extends Fragment {
         kingdom_name = (TextView) mViewGroup.findViewById(R.id.kingdom_name);
         kingdom_name.setText(mName);
         kingdom_image = (ImageView) mViewGroup.findViewById(R.id.kingdom_image);
-        Picasso.with(mViewGroup.getContext())
-                .load(mImage)
-                .into(kingdom_image);
+        try {
+            Picasso.with(mViewGroup.getContext())
+                    .load(mImage)
+                    .into(kingdom_image);
+        } catch(Exception e) {
+            Picasso.with(mViewGroup.getContext())
+                    .load(R.drawable.icon)  //Insert a default, no-image-available here - if image fails(null or 404 error)
+                    .into(kingdom_image);
+        }
         kingdom_climate = (TextView) mViewGroup.findViewById(R.id.kingdom_climate);
         kingdom_climate.setText(mClimate);
         kingdom_population = (TextView) mViewGroup.findViewById(R.id.kingdom_population);
@@ -151,13 +157,12 @@ public class KingdomDetailsFragment extends Fragment {
         toolbar.setTitle(mName);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setBackgroundResource(R.color.toolbar_background);
-        //toolbar.setLogo(R.drawable.icon);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), KingdomsListActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                startActivity(intent); //Navigate back to KingdomsListActivity
+                getActivity().finish(); //End this activity to avoid back button returning here
             }
         });
         return mViewGroup;

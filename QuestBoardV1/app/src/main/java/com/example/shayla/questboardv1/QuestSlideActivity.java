@@ -78,6 +78,11 @@ public class QuestSlideActivity extends FragmentActivity implements QuestSlidePa
         }
     }
 
+    /**
+     * Handles interactions with {@Link QuestSlidePageFragment}
+     *
+     * @param uri
+     */
     @Override
     public void onFragmentInteraction(Uri uri) {
     }
@@ -97,10 +102,10 @@ public class QuestSlideActivity extends FragmentActivity implements QuestSlidePa
                 KingdomDetailsFragment frag = new KingdomDetailsFragment();
                 Bundle bundle = new Bundle();
                 //Add all of the information that will be needed on the new fragment
-                bundle.putString("KINGDOM_NAME", mKingdom.getName());
-                bundle.putString("KINGDOM_IMAGE", mKingdom.getImage());
-                bundle.putString("KINGDOM_CLIMATE", mKingdom.getClimate());
-                bundle.putInt("KINGDOM_POPULATION", mKingdom.getPopulation());
+                bundle.putString(getString(R.string.KINGDOM_NAME), mKingdom.getName());
+                bundle.putString(getString(R.string.KINGDOM_IMAGE), mKingdom.getImage());
+                bundle.putString(getString(R.string.KINGDOM_CLIMATE), mKingdom.getClimate());
+                bundle.putInt(getString(R.string.KINGDOM_POPULATION), mKingdom.getPopulation());
                 frag.setArguments(bundle);
                 return frag;
             } else {
@@ -108,10 +113,10 @@ public class QuestSlideActivity extends FragmentActivity implements QuestSlidePa
                 Quest q = mKingdom.getQuests().get(position - 1); //Creates a fragment for each Quest
                 Bundle bundle = new Bundle();
                 //Add all of hte information that will be needed on the new fragment
-                bundle.putString("QUEST_NAME", q.getName());
-                bundle.putString("QUEST_DESCRIPTION", q.getDescription());
-                bundle.putString("GIVER_NAME", q.getGiver().getName());
-                bundle.putString("GIVER_IMAGE", q.getGiver().getImage());
+                bundle.putString(getString(R.string.QUEST_NAME), q.getName());
+                bundle.putString(getString(R.string.QUEST_DESCRIPTION), q.getDescription());
+                bundle.putString(getString(R.string.GIVER_NAME), q.getGiver().getName());
+                bundle.putString(getString(R.string.GIVER_IMAGE), q.getGiver().getImage());
                 frag.setArguments(bundle);
                 return frag;
             }

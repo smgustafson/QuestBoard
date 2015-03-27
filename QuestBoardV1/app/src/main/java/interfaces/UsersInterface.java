@@ -17,5 +17,6 @@ import retrofit.http.Path;
 public interface UsersInterface {
     @FormUrlEncoded
     @POST("/api/v1/subscribe/")
-    public void createUser(@Field("email") String mEmail, Callback<SubscribeMessage> callback);
+    public SubscribeMessage createUser(@Field("email") String mEmail);
+//    public void createUser(@Field("email") String mEmail, Callback<SubscribeMessage> callback);
 }

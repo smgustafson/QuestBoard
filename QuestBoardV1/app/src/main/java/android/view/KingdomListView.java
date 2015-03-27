@@ -12,15 +12,10 @@ import android.view.View;
 
 import com.example.shayla.questboardv1.R;
 
-/**
-* TODO: document your custom view class.
-*/
-
-
 public class KingdomListView extends View {
-    private String mExampleString; // TODO: use a default from R.string...
-    private int mExampleColor = Color.RED; // TODO: use a default from R.color...
-    private float mExampleDimension = 0; // TODO: use a default from R.dimen...
+    private String mExampleString;
+    private int mExampleColor = Color.RED;
+    private float mExampleDimension = 0;
     private Drawable mExampleDrawable;
 
     private TextPaint mTextPaint;
@@ -87,8 +82,6 @@ public class KingdomListView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        // TODO: consider storing these as member variables to reduce
         // allocations per draw cycle.
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();

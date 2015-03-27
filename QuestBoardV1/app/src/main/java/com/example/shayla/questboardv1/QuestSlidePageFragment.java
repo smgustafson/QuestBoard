@@ -34,10 +34,10 @@ public class QuestSlidePageFragment extends Fragment {
     private static final String GIVER_IMAGE = "GIVER_IMAGE";
 
     //Values to display on UI
-    private String questName = "No name available for this quest";
-    private String questDescription = "No description available for this quest.";
-    private String giverName = "No giver name available";
-    private String giverImage = "No image available for this giver";
+    private String questName;
+    private String questDescription;
+    private String giverName;
+    private String giverImage;
 
     //UI References
     TextView quest_name;
@@ -80,14 +80,21 @@ public class QuestSlidePageFragment extends Fragment {
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        //Set all the UI components. Load default input if null
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            if(getArguments().getString(QUEST_NAME)!=null)questName = getArguments().getString(QUEST_NAME);
-            if(getArguments().getString(QUEST_DESCRIPTION)!=null && getArguments().getString(QUEST_DESCRIPTION).trim().length()!=0)
+            if(getArguments().getString(QUEST_NAME)!=null) {
+                questName = getArguments().getString(QUEST_NAME);
+            } else { questName = getString(R.string.no_quest_name_available); }
+            if(getArguments().getString(QUEST_DESCRIPTION)!=null && getArguments().getString(QUEST_DESCRIPTION).trim().length()!=0) {
                 questDescription = getArguments().getString(QUEST_DESCRIPTION);
-            if(getArguments().getString(GIVER_NAME)!=null)giverName = getArguments().getString(GIVER_NAME);
-            if(getArguments().getString(GIVER_IMAGE)!=null && getArguments().getString(GIVER_IMAGE).trim().length()!=0)giverImage = getArguments().getString(GIVER_IMAGE);
+            } else { questDescription = getString(R.string.no_quest_description_available); }
+            if(getArguments().getString(GIVER_NAME)!=null) {
+                giverName = getArguments().getString(GIVER_NAME);
+            } else { giverName = getString(R.string.no_giver_name_available); }
+            if(getArguments().getString(GIVER_IMAGE)!=null && getArguments().getString(GIVER_IMAGE).trim().length()!=0) {
+                giverImage = getArguments().getString(GIVER_IMAGE);
+            } else { giverImage = getString(R.string.no_giver_image_available); }
         }
     }
 
@@ -148,20 +155,25 @@ public class QuestSlidePageFragment extends Fragment {
         giver_name = (TextView) mViewGroup.findViewById(R.id.giver_name);
         giver_name.setText(giverName);
         giver_image = (ImageView) mViewGroup.findViewById(R.id.giver_image);
-        Picasso.with(mViewGroup.getContext())
-                .load(giverImage)
-                .into(giver_image);
+        try {
+            Picasso.with(mViewGroup.getContext())
+                    .load(giverImage)
+                    .into(giver_image);
+        } catch(Exception e) {
+            Picasso.with(mViewGroup.getContext())
+                    .load(R.drawable.icon)  //Insert a default, no-image-available here
+                    .into(giver_image);
+        }
         toolbar = (Toolbar) mViewGroup.findViewById(R.id.questToolbar);
         toolbar.setTitle(questName);
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setBackgroundResource(R.color.toolbar_background);
-        //toolbar.setLogo(R.drawable.icon);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), KingdomsListActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                startActivity(intent); //Navigate back to Kingdoms List
+                getActivity().finish(); //Close this activity to prevent back button from navigating here
             }
         });
 

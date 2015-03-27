@@ -15,62 +15,71 @@
             android:id="@+id/detailsToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <ImageView
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:id="@+id/kingdom_image"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:layout_centerHorizontal="true" />
-        <TextView
-            android:padding="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kingdom name"
-            android:textSize="@dimen/text_extra_large"
-            android:textColor="@color/theme_purple"
-            android:id="@+id/kingdom_name" />
-        <LinearLayout android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:id="@+id/kingdom_image"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_centerHorizontal="true" />
             <TextView
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:textColor="@color/theme_med_blue"
-                android:labelFor="@+id/kingdom_climate"
-                android:text="@string/climate_label"
-                android:id="@+id/kingdom_climate_label" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:text="kingdom name"
+                android:textSize="@dimen/text_extra_large"
+                android:textColor="@color/theme_purple"
+                android:id="@+id/kingdom_name" />
+            <LinearLayout android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:text="kingdom climate"
-                android:id="@+id/kingdom_climate" />
+                android:orientation="horizontal"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large"
+                    android:textColor="@color/theme_med_blue"
+                    android:labelFor="@+id/kingdom_climate"
+                    android:text="@string/climate_label"
+                    android:id="@+id/kingdom_climate_label" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large"
+                    android:text="kingdom climate"
+                    android:id="@+id/kingdom_climate" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large"
+                    android:textColor="@color/theme_med_blue"
+                    android:labelFor="@+id/kingdom_population"
+                    android:text="@string/population_label"
+                    android:id="@+id/kingdom_population_label" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_large"
+                    android:text="kingdom population"
+                    android:id="@+id/kingdom_population" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:textColor="@color/theme_med_blue"
-                android:labelFor="@+id/kingdom_population"
-                android:text="@string/population_label"
-                android:id="@+id/kingdom_population_label" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_large"
-                android:text="kingdom population"
-                android:id="@+id/kingdom_population" />
-        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-
 </FrameLayout>
